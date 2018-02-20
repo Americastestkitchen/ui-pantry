@@ -1,0 +1,19 @@
+{
+  "name": "atk-ui-pantry",
+  "version": "1.0.0",
+  "description": "UI Utility Library for ATK projects",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Americastestkitchen/ui-pantry.git"
+  },
+  "author": "Joshua Briley",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Americastestkitchen/ui-pantry/issues"
+  },
+  "homepage": "https://github.com/Americastestkitchen/ui-pantry#readme"
+}
