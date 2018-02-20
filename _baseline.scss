@@ -1,0 +1,72 @@
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+  margin: 0;
+  padding: 0;
+
+  *,
+  *::before,
+  *::after {
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    box-sizing: inherit;
+  }
+}
+
+body {
+  -moz-osx-font-smoothing: grayscale;
+  -ms-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+// These keep showing up in Chrome for some reason.
+// Possible it's associated with some sort of extension
+figure,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+li,
+p,
+th,
+td {
+  -webkit-margin-after: 0;
+  -webkit-margin-before: 0;
+  -webkit-margin-end: 0;
+  -webkit-margin-start: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+
+h1:empty,
+h2:empty,
+h3:empty,
+h4:empty,
+p:empty,
+li:empty,
+span:empty,
+div:not(.atkOffsitePanel__blur):empty {
+  display: none;
+}
+
+.atkOffsitePanel__blur {
+  z-index: 1;
+}
+
+a,
+button {
+  cursor: pointer;
+}
+

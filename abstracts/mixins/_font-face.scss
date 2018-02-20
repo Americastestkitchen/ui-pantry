@@ -1,0 +1,13 @@
+@mixin font-face-cdn($font-family, $file-name) {
+  @font-face {
+    font-family: '#{$font-family}';
+    src: url('https://everest-production.s3.amazonaws.com/fonts/#{$file-name}.woff') format('woff');
+  }
+}
+
+@mixin font-face-local($font-family, $file-name) {
+  @font-face {
+    font-family: '#{$font-family}';
+    src: font-url('#{$file-name}.woff') format('woff');
+  }
+}

@@ -1,0 +1,10 @@
+@mixin svg-transform-center($top, $left, $ff-top, $ff-left) {
+  @include browser(firefox) {
+    @include position(absolute, $ff-top null null $ff-left);
+    position: inherit;
+    transform: translateX(0) translateY(0);
+  }
+
+  @include position(absolute, $top null null $left);
+  transform: translateX(-50%) translateY(-50%);
+}

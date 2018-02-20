@@ -1,0 +1,36 @@
+@mixin custom-checkbox {
+  &[type='checkbox'] {
+    @include position(absolute, null null null rem(-9999px));
+
+    &:not(:checked) + label::before,
+    &:checked + label::before {
+      @include position(absolute, 0 null null rem(10px));
+      @include size(rem(16px));
+      background-color: color(background, invert);
+      border: color(border) rem(1px) solid;
+      content: '';
+      line-height: rem(12px);
+      text-align: center;
+      transition: background-color .2s;
+    }
+
+    &:hover {
+      &:not(:checked) + label::before {
+        background-color: color(label);
+      }
+    }
+
+    &:checked + label::before {
+      background-color: color(label, colored);
+      border-color: color(label, colored);
+      content: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2LjQgNC45IiBoZWlnaHQ9IjciIHdpZHRoPSIxMCI+PGRlZnM+PHN0eWxlPi5he2ZpbGw6I2ZmZjt9PC9zdHlsZT48L2RlZnM+PHRpdGxlPmljX2RvbmVfMjRweDwvdGl0bGU+PHBhdGggY2xhc3M9ImEiIGQ9Ik0yLDMuOS41LDIuMywwLDIuOWwyLDJMNi40LjUsNS45LDBaIi8+PC9zdmc+Cg==');
+    }
+
+    + label {
+      @include padding(null null null rem(36px));
+      @include position(relative, null);
+      cursor: pointer;
+      line-height: rem(16px);
+    }
+  }
+}

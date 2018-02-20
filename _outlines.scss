@@ -1,0 +1,30 @@
+@if length($combined-outline-sizes) > 0 {
+  @each $breakpoint-width, $break-point-size in $utility-breakpoints {
+    @if $breakpoint-width == 'mobile' {
+      @each $width, $outline-width in $combined-outline-sizes {
+        .ol-#{$width} {
+            outline: #{$outline-width} solid;
+        }
+      }
+    } @else {
+      @media (min-width: $break-point-size) {
+        .ol-n#{$breakpoint-separator}#{$breakpoint-width} {
+          outline: none;
+        }
+        @each $width, $outline-width in $border-widths {
+          .ol-#{$width}#{$breakpoint-separator}#{$breakpoint-width} {
+              outline: #{$outline-width} solid;
+            }
+        }
+      }
+    }
+  }
+}
+
+@if length($site-colors) > 0  {
+  @each $color, $outline-color in $site-colors {
+    .ol#{$color} {
+      outline-color: $outline-color;
+    }
+  }
+}

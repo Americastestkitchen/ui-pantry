@@ -1,0 +1,19 @@
+@if length($combined-container-orders) > 0  {
+  @each $breakpoint-width, $break-point-size in $utility-breakpoints {
+    @if $breakpoint-width == 'mobile' {
+      @each $order, $container-order in $combined-container-orders {
+        .fo-#{$order} {
+          order: #{$order};
+        }
+      }
+    } @else {
+      @media (min-width: $break-point-size) {
+        @each $order, $container-order in $combined-container-orders {
+          .fo-#{$order}#{$breakpoint-separator}#{$breakpoint-width} {
+            order: #{$order};
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,170 @@
+// Text alignment
+.ta-c {
+  text-align: center;
+}
+
+.ta-r {
+  text-align: right;
+}
+
+.ta-l {
+  text-align: left;
+}
+
+.td-n {
+  text-decoration: none;
+}
+
+.td-u {
+  text-decoration: underline;
+}
+
+.td-s {
+  text-decoration: line-through;
+}
+
+.tt-u {
+  text-transform: uppercase;
+}
+
+.tt-c {
+  text-transform: capitalize;
+}
+
+.tt-l {
+  text-transform: lowercase;
+}
+
+.t-label {
+  letter-spacing: .16rem;
+  display: inline-flex;
+  text-transform: uppercase;
+}
+.t-strike {
+  text-decoration: line-through;
+}
+
+@include mq(tablet) {
+  .ta-c\@tablet {
+    text-align: centered;
+  }
+  .ta-r\@tablet {
+    text-align: right;
+  }
+  .ta-l\@tablet {
+    text-align: left;
+  }
+  .td-n\@tablet {
+    text-decoration: none;
+  }
+
+  .td-u\@tablet {
+    text-decoration: underline;
+  }
+
+  .td-s\@tablet {
+    text-decoration: line-through;
+  }
+}
+
+@include mq(desktop) {
+  .ta-c\@desktop {
+    text-align: centered;
+  }
+  .ta-r\@desktop {
+    text-align: right;
+  }
+  .ta-l\@desktop {
+    text-align: left;
+  }
+  .td-n\@desktop {
+    text-decoration: none;
+  }
+
+  .td-u\@desktop {
+    text-decoration: underline;
+  }
+
+  .td-s\@desktop {
+    text-decoration: line-through;
+  }
+}
+
+// Text Colors
+@if length($site-colors) > 0  {
+  @each $tc, $tc-color in $site-colors {
+    .t#{$tc} {
+      color: #{$tc-color};
+    }
+  }
+}
+
+@if length($combined-font-sizes) > 0  {
+  @each $ts, $ts-size in $combined-font-sizes {
+    @each $breakpoint-width, $break-point-size in $utility-breakpoints {
+      @if $breakpoint-width == 'mobile' {
+        .ts-#{$ts} {
+          font-size: #{$ts-size};
+        }
+      } @else {
+        @media (min-width: $break-point-size) {
+          .ts-#{$ts}#{$breakpoint-separator}#{$breakpoint-width} {
+            font-size: #{$ts-size};
+          }
+        }
+      }
+      @include mq-max(map-get($breakpoints, medium-min)) {
+        .ts-#{$ts}#{$breakpoint-separator}mobile-only {
+          font-size: #{$ts-size};
+        }
+      }
+      @include mq-range(map-get($breakpoints, medium-min), map-get($breakpoints, large)) {
+        .ts-#{$ts}#{$breakpoint-separator}tablet-only {
+          font-size: #{$ts-size};
+        }
+      }
+    }
+  }
+}
+
+@if length($combined-line-heights) > 0  {
+  @each $breakpoint-width, $break-point-size in $utility-breakpoints {
+    @if $breakpoint-width == 'mobile' {
+      @each $height, $line-height in $combined-line-heights {
+        .lh-#{$height} {
+          line-height: $line-height;
+        }
+      }
+    }
+    @else {
+      @media (min-width: $break-point-size) {
+        @each $height, $line-height in $combined-line-heights {
+          .lh-#{$height}#{$breakpoint-separator}#{$breakpoint-width} {
+            line-height: $line-height;
+          }
+        }
+      }
+    }
+  }
+}
+
+@if length($combined-letter-spacing) > 0  {
+  @each $breakpoint-width, $break-point-size in $utility-breakpoints {
+    @if $breakpoint-width == 'mobile' {
+      @each $spacing, $letter-spacing in $combined-letter-spacing {
+        .ls-#{$spacing} {
+          letter-spacing: $letter-spacing;
+        }
+      }
+    }
+    @else {
+      @media (min-width: $break-point-size) {
+        @each $spacing, $letter-spacing in $combined-letter-spacing {
+          .ls-#{$spacing}#{$breakpoint-separator}#{$breakpoint-width} {
+            letter-spacing: $letter-spacing;
+          }
+        }
+      }
+    }
+  }
+}

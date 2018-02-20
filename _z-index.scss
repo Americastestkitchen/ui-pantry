@@ -1,0 +1,28 @@
+.zi-t {
+  z-index: 2;
+  &\@tablet {
+    z-index: 2;
+  }
+  &\@desktop {
+    z-index: 2;
+  }
+
+}
+.zi-b {
+  z-index: 0;
+  &\@tablet {
+    z-index: 0;
+  }
+  &\@desktop {
+    z-index: 0;
+  }
+}
+.zi-m {
+  z-index: 1; 
+  &\@tablet {
+    z-index: 1;
+  }
+  &\@desktop {
+    z-index: 1;
+  }
+}

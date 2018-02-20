@@ -1,0 +1,13 @@
+@mixin responsive-svg {
+  align-items: center;
+  display: flex;
+  height: 0;
+  position: relative;
+  width: 100%;
+
+  svg {
+    @include position(absolute, 0 null null 0);
+    max-height: rem(50px);
+    width: 90%;
+  }
+}

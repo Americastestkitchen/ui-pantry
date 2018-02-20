@@ -1,0 +1,58 @@
+// .app__wrapper {
+//   h1, h2, h3, h4, h5, h6, li, td, p, input, select, div, span {
+//     font-family: $merriweather;
+//     font-weight: normal;
+//     > a:not(.btn) {
+//       text-decoration: none;
+//       &:hover {
+//         color: map-get($my-site-colors, c-lt-brown);
+//       }
+//     }
+//   }
+
+//   .t-alt {
+//     font-family: $proxima-nova-regular;
+//   }
+
+//   .btn,
+//   .t-label,
+//   .t-alt-bold,
+//   .t-alt strong {
+//     font-family: $proxima-nova-bold;
+//   }
+// }
+
+// .app__main {
+//   max-width: 1184px;
+//   margin: 0 auto;
+//   display: block;
+
+//   input, select {
+//     color: map-get($my-site-colors, c-dk-brown);
+//     &:invalid {
+//       color: map-get($my-site-colors, c-dk-gray) !important;
+//     }
+//   }
+
+  
+// }
+
+
+
+// ::-webkit-input-placeholder { /* Chrome */
+//   color: map-get($my-site-colors, c-dk-gray);
+// }
+// :-ms-input-placeholder { /* IE 10+ */
+//   color: map-get($my-site-colors, c-dk-gray);
+// }
+// ::-moz-placeholder { /* Firefox 19+ */
+//   color: map-get($my-site-colors, c-dk-gray);
+// }
+// :-moz-placeholder { /* Firefox 4 - 18 */
+//   color: map-get($my-site-colors, c-dk-gray);
+// }
+
+// .section-wrapper {
+//   max-width: 1184px;
+//   margin: 0 auto;
+// }

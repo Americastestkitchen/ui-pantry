@@ -1,0 +1,83 @@
+@if length($default-positions) > 0  {
+  @each $breakpoint-width, $break-point-size in $utility-breakpoints {
+    @if $breakpoint-width == 'mobile' {
+      @each $positioning, $position in $default-positions {
+        .pos-#{$positioning} {
+          position: absolute;
+          #{$position}: 0;
+        }
+      }
+      @each $positioning, $position in $default-position-styles {
+        .pos-#{$positioning} {
+          position: #{$position};
+        }
+      }
+    } @else {
+        @media (min-width: $break-point-size) {
+          @each $positioning, $position in $default-positions {
+            .pos-#{$positioning}#{$breakpoint-separator}#{$breakpoint-width} {
+              position: absolute;
+              #{$position}: 0;
+            }
+          }
+          @each $positioning, $position in $default-position-styles {
+            .pos-#{$positioning}#{$breakpoint-separator}#{$breakpoint-width} {
+              position: #{$position};
+            }
+          }
+        }
+      }
+    }
+}
+
+.pos-h-c {
+  left: 50%;
+  transform: translateX(-50%);
+  @include mq(tablet) {
+    &\@tablet {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+  @include mq(desktop) {
+    &\@desktop {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+}
+.pos-v-c {
+  top: 50%;
+  transform: translateY(-50%);
+  @include mq(tablet) {
+    &\@tablet {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+  @include mq(desktop) {
+    &\@desktop {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+}
+.pos-h-v-c {
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  @include mq(tablet) {
+    &\@tablet {
+      left: 50%;
+      top: 50%;
+      transform: translateX(-50%) translateY(-50%);
+    }
+  }
+  @include mq(desktop) {
+    &\@desktop {
+      left: 50%;
+      top: 50%;
+      transform: translateX(-50%) translateY(-50%);
+    }
+  }
+}

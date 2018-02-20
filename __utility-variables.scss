@@ -1,0 +1,160 @@
+$delimiter: \/ !default;
+$breakpoint-separator: \@ !default;
+
+$box-regions: (
+  t: 'top',
+  r: 'right',
+  b: 'bottom',
+  l: 'left',
+  v: 'vertical',
+  h: 'horizontal'
+);
+
+// BREAKPOINTS
+$default-breakpoints: (
+  mobile: 0px,
+  tablet: 669px,
+  desktop: 1100px
+);
+$utility-breakpoints: map-merge($my-breakpoints, $default-breakpoints);
+
+$spacing-breakpoints: (
+  mobile: 0px,
+  tablet: 669px,
+  desktop: 1100px
+);
+
+// BORDERS
+$default-border-styles: (
+  s: 'solid'
+);
+$border-styles: map-merge($my-border-styles, $default-border-styles);
+
+$default-border-widths: (
+  sm: .1rem
+);
+$border-widths: map-merge($my-border-widths, $default-border-widths);
+
+// BUTTONS
+$default-button-heights: ();
+$combined-button-heights: map-merge($default-button-heights, $my-button-heights);
+
+// Container Orders
+$default-container-orders: ();
+$combined-container-orders: map-merge($my-container-orders, $default-container-orders);
+
+// FONTS
+$clarendon-bold: 'Clarendon Bold', serif;
+$merriweather: 'Merriweather', serif;
+$montserrat: 'Montserrat', sans-serif;
+$montserrat-light: 'Montserrat Light', sans-serif;
+$montserrat-semi-bold: 'Montserrat Semi Bold', sans-serif;
+$proxima-nova-regular: 'Proxima Nova Regular', sans-serif;
+$proxima-nova-regular-italic: 'Proxima Nova Regular Italic', sans-serif;
+$proxima-nova-bold: 'Proxima Nova Bold', sans-serif;
+$proxima-nova-semi-bold: 'Proxima Nova Semi Bold', sans-serif;
+$roboto: 'Roboto Condensed', sans-serif;
+
+$default-font-sizes: ();
+$combined-font-sizes: map-merge($my-font-sizes, $default-font-sizes);
+
+// Form inputs
+$default-form-input-heights: ();
+$combined-form-input-heights: map-merge($my-form-input-heights, $default-form-input-heights);
+
+// Grid Variables
+$grid-breakpoints: (
+  mobile: 0px,
+  tablet: 669px,
+  desktop: 1100px
+);
+
+$grid-direction: (
+  fd-r: 'row',
+  fd-rr: 'row-reverse',
+  fd-c: 'column',
+  fd-cr: 'column-reverse'
+);
+
+$grid-wrap: (
+ fw-nw: 'no-wrap',
+ fw-w: 'wrap',
+ fw-wr: 'wrap-reverse'
+);
+
+$grid-justify-content: (
+  jc-c: 'center',
+  jc-fs: 'flex-start',
+  jc-fe: 'flex-end',
+  jc-sb: 'space-between',
+  jc-sa: 'space-around',
+  jc-se: 'space-evenly',
+);
+
+$grid-align-content: (
+  ac-fs: 'flex-start',
+  ac-fe: 'flex-end',
+  ac-c: 'center',
+  ac-s: 'stretch',
+  ac-sb: 'space-between',
+  ac-sa: 'space-around'
+);
+
+$grid-align-items: (
+  ai-fs: 'flex-start',
+  ai-fe: 'flex-end',
+  ai-c: 'center',
+  ai-s: 'stretch',
+  ai-b: 'baseline'
+);
+
+$grid-align-self: (
+  as-a: 'auto',
+  as-fs: 'flex-start',
+  as-fe: 'flex-end',
+  as-c: 'center',
+  as-b: 'baseline',
+  as-s: 'stretch'
+);
+
+// Icon widts
+$default-icon-widths: ();
+$combined-icon-widths: map-merge($my-icon-widths, $default-icon-widths);
+
+// Letter Spacing
+$default-letter-spacing: ();
+$combined-letter-spacing: map-merge($default-letter-spacing, $my-letter-spacing);
+
+// Line heights
+$default-line-heights: ();
+$combined-line-heights: map-merge($default-line-heights, $my-line-heights);
+
+// Outlines
+$default-outline-sizes: ();
+$combined-outline-sizes: map-merge($default-outline-sizes, $my-outline-sizes);
+
+// Padding/Spacing
+$default-padding: ();
+
+$padding: map-merge($my-padding, $default-padding);
+
+// Positionings
+$default-positions: (
+  t: 'top',
+  r: 'right',
+  b: 'bottom',
+  l: 'left'
+);
+
+$default-position-styles: (
+  abs: 'absolute',
+  f: 'fixed',
+  rel: 'relative'
+);
+
+// Colors
+$default-site-colors: (
+  c-white: #fff,
+  c-black: #000
+);
+$site-colors: map-merge($my-site-colors, $default-site-colors);

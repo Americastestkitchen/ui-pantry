@@ -1,0 +1,112 @@
+@if length($border-widths) > 0  {
+  @each $breakpoint-width, $break-point-size in $utility-breakpoints {
+    @if $breakpoint-width == 'mobile' {
+      @each $width, $border-width in $border-widths {
+        @each $style, $border-style in $border-styles {
+          .b-#{$style}-#{$width} {
+            border: #{$border-width} #{$border-style};
+          }
+          @each $border, $item in $box-regions {
+            @if $item == 'vertical' {
+              .bv-#{$style}-#{$width} {
+                border-top: #{$border-width} #{$border-style};
+                border-bottom: #{$border-width} #{$border-style};
+              }
+            } @else if ($item == 'horizontal') {
+            .bh-#{$style}-#{$width} {
+                border-left: #{$border-width} #{$border-style};
+                border-right: #{$border-width} #{$border-style};
+              }
+            } @else {
+              .b#{$border}-#{$style}-#{$width} {
+                border-#{$item}: #{$border-width} #{$border-style};
+              }
+            }
+          }
+        }
+      }
+    } @else {
+      @media (min-width: $break-point-size) {
+        .b-n#{$breakpoint-separator}#{$breakpoint-width} {
+          border: none;
+        }
+        .bm-n#{$breakpoint-separator}#{$breakpoint-width} {
+          &::after {
+            height: 0;
+          }
+        }
+        @each $width, $border-width in $border-widths {
+          @each $style, $border-style in $border-styles {
+            .b-#{$style}-#{$width}#{$breakpoint-separator}#{$breakpoint-width} {
+              border: #{$border-width} #{$border-style};
+            }
+            .bm#{$breakpoint-separator}#{$breakpoint-width} {
+              position: relative;
+              &::after {
+                content: "";
+                height: .1rem;
+                left: 0;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 100%;
+                z-index: 0;
+              }
+            }
+            @each $border, $item in $box-regions {
+              @if $item == 'vertical' {
+                .bv-#{$style}-#{$width}#{$breakpoint-separator}#{$breakpoint-width} {
+                  border-top: #{$border-width} #{$border-style};
+                  border-bottom: #{$border-width} #{$border-style};
+                }
+              } @else if ($item == 'horizontal') {
+              .bh-#{$style}-#{$width}#{$breakpoint-separator}#{$breakpoint-width} {
+                  border-left: #{$border-width} #{$border-style};
+                  border-right: #{$border-width} #{$border-style};
+                }
+              } @else {
+                .b#{$border}-#{$style}-#{$width}#{$breakpoint-separator}#{$breakpoint-width} {
+                  border-#{$item}: #{$border-width} #{$border-style};
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@if length($site-colors) > 0  {
+  @each $color, $border-color in $site-colors {
+    .b#{$color} {
+      border-color: $border-color !important;
+    }
+    .bm#{$color} {
+      &::after {
+        background-color: $border-color;
+      }
+    }
+  }
+}
+
+// Border middle
+// This should be placed on a container element
+/*
+<div clas="bm">
+  <button>A Button</button>
+</div>
+*/
+.bm {
+  position: relative;
+  &::after {
+    content: "";
+    height: .1rem;
+    left: 0;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    z-index: -1;
+  } 
+}

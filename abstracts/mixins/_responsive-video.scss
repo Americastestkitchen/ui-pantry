@@ -1,0 +1,18 @@
+@mixin video-container($video-width: 16, $video-height: 9) {
+  // Assumes Youtube video
+  // Kaltura videos will be styled separately.
+  @include aspect-ratio($video-width, $video-height);
+  height: 0;
+  overflow: hidden;
+  padding-top: rem(25px);
+  position: relative;
+
+  iframe,
+  object {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+}

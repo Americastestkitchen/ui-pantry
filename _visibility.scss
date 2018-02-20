@@ -1,0 +1,76 @@
+@media screen {
+  .print-only {
+    display: none;
+  }
+}
+
+.hidden {
+  display: none !important;
+}
+
+[aria-hidden] {
+  display: none;
+}
+
+[aria-hidden="false"] {
+  display: block;
+}
+
+.mobile-only {
+  @include mq(tablet) {
+    display: none !important;
+  }
+}
+
+.not-mobile {
+  @include mq-max(map-get($breakpoints, medium-min) - 1) {
+    display: none !important;
+  }
+}
+
+.tablet-only {
+  @include mq-max(map-get($breakpoints, medium-min) - 1) {
+    display: none !important;
+  }
+
+  @include mq(desktop) {
+    display: none !important;
+  }
+}
+
+.not-tablet {
+  @include mq-range(map-get($breakpoints, medium-min), map-get($breakpoints, large)) {
+    display: none !important;
+  }
+}
+
+.desktop-only {
+  @include mq-max(map-get($breakpoints, large) - 1) {
+    display: none !important;
+  }
+}
+
+.landscape-only {
+  @media screen and (orientation: portrait) {
+    display: none !important;
+  }
+}
+
+.portrait-only {
+  @media screen and (orientation: landscape) {
+    display: none !important;
+  }
+}
+
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap; /* 1 */
+}

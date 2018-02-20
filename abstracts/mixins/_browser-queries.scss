@@ -1,0 +1,111 @@
+@mixin browser($browser) {
+  @if $browser == 'firefox' {
+    @-moz-document url-prefix() {
+      @content;
+    }
+  }
+
+  @if $browser == 'galax3' {
+    @media only screen and (-webkit-device-pixel-ratio: 2) {
+      @content;
+    }
+  }
+
+  @if $browser == 'ipad-mini' {
+    @media screen and (device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 1) {
+      @content;
+    }
+  }
+
+  @if $browser == 'ipad-4' {
+    @media screen and (device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) {
+      @content;
+    }
+  }
+
+  @if $browser == 'ipad-all' {
+    @media only screen
+    and (min-device-width: 768px)
+    and (max-device-width: 1024px)
+    and (-webkit-min-device-pixel-ratio: 1) {
+      @content;
+    }
+
+    @media only screen
+    and (min-device-width: 768px)
+    and (max-device-width: 1024px)
+    and (-webkit-min-device-pixel-ratio: 2) {
+      @content;
+    }
+  }
+
+  @if $browser == 'iphone-5' {
+    @media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) {
+      @content;
+    }
+  }
+
+  @if $browser == 'iphone-6' {
+    @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
+      @content;
+    }
+  }
+
+  @if $browser == 'iphone-6-plus' {
+    @media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) {
+      @content;
+    }
+  }
+
+  @if $browser == 'iphone-all' {
+    @media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) {
+      @content;
+    }
+
+    @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
+      @content;
+    }
+
+    @media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) {
+      @content;
+    }
+  }
+
+  @if $browser == 'ie-10-11' {
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+      @content;
+    }
+  }
+
+  @if $browser == 'edge' {
+    @supports (-ms-accelerator: true) {
+      @content;
+    }
+
+    @supports (-ms-ime-align:auto) and (not (-ms-accelerator:true)) {
+      @content; 
+    }
+    
+    @supports (-ms-ime-align:auto) and (-webkit-text-stroke:initial) {
+      @content;
+    }
+  }
+
+  @if $browser == 'nexus-7' {
+    @media screen and (device-width: 600px) and (device-height: 905px) and (-webkit-min-device-pixel-ratio: 1.331) and (-webkit-max-device-pixel-ratio: 1.332) {
+      @content;
+    }
+  }
+
+  @if $browser == 'safari-10' {
+    _::-webkit-:host:not(:root:root) {
+      @content;
+    }
+  }
+
+  @if $browser == 'safar-10-desktop' {
+    _::-webkit-:-webkit-full-screen:host:not(:root:root) {
+      @content;
+    }
+  }
+}

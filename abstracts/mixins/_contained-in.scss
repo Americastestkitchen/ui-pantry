@@ -1,0 +1,13 @@
+@mixin qualify($arg) {
+  @at-root #{$arg} &  {
+    @content;
+  }
+}
+
+@mixin contained-in($arguments...) {
+  @each $argument in $arguments {
+    @include qualify($argument) {
+      @content;
+    }
+  }
+}

@@ -1,0 +1,60 @@
+// Container/Wrapper Variables
+
+$app-wrapper: (
+  max-width: 1200px,
+  mobile-wrapper-padding: 16px,
+  tablet-wrapper-padding: 16px,
+  desktop-wrapper-padding: 16px
+);
+
+$breakpoints: (
+  small: 668px,
+  medium-min: 669px,
+  medium-max: 1099px,
+  large: 1100px
+);
+
+$padding: (
+  small: rem(4px),
+  default: rem(8px),
+  large: rem(16px)
+);
+
+$small-screen-names: (
+  small,
+  small-screen,
+  small-only,
+  mobile,
+  handheld
+);
+
+$medium-screen-names: (
+  medium,
+  medium-screen,
+  notepad,
+  tablet
+);
+
+$medium-only-screen-names: (
+  medium-only,
+  medium-screen-only,
+  notepad-only,
+  tablet-only
+);
+
+$large-screen-names: (
+  large,
+  large-screen,
+  large-screen-only,
+  desktop,
+  desktop-only
+);
+
+$zi: (
+  top: 4,
+  middle-top: 3,
+  middle: 2,
+  middle-bottom: 1,
+  bottom: 0,
+  sub: -1
+);

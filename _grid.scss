@@ -1,0 +1,192 @@
+$grid-margin: 12; // must be a number
+$grid-margin-tablet: 8;
+$grid-margin-desktop: 16;
+$fractions: 1 2 3 4 5; // Grid fractions
+
+.grid {
+  display: flex;
+  width: 100%;
+  position: relative;
+}
+
+[class^="cell-"] {
+  display: flex; // set to flex, to allow for nested grids
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.cell {
+  &-image {
+    display: block;
+    width: 100%;
+    img {
+      height: auto;
+      width: 100%;
+    }
+  }
+}
+
+@function flexcalc($percentage, $breakpoint-width, $value: "negative") {
+  @if $grid-margin != 0 {
+     @if unquote($value) == negative {
+       @if $breakpoint-width == "mobile" {
+         @return calc(#{$percentage} - #{$grid-margin}px);
+       }
+       @if $breakpoint-width == "tablet" {
+         @return calc(#{$percentage} - #{$grid-margin-tablet}px);
+       }
+       @if $breakpoint-width == "desktop" {
+         @return calc(#{$percentage} - #{$grid-margin-desktop}px);
+       }
+
+     } @else {
+       @if $breakpoint-width == "mobile" {
+        @return calc(#{$percentage} + #{$grid-margin}px);
+       }
+       @if $breakpoint-width == "tablet" {
+        @return calc(#{$percentage} + #{$grid-margin-tablet}px);
+       }
+       @if $breakpoint-width == "desktop" {
+        @return calc(#{$percentage} + #{$grid-margin-desktop}px);
+       }
+     }
+  } @else {
+    @return $percentage;
+  }
+}
+
+// END VARIABLES AND ABSTRACTS
+
+@mixin columns($breakpoint-width, $denominator, $columns, $platform) {
+  @for $numerator from 1 through $denominator {
+    $percentage: percentage($numerator / $denominator);
+
+    @if($numerator != $denominator) {
+      @if $platform == mobile {
+        .cell-#{$numerator}#{$delimiter}#{$denominator} {
+          flex-basis: flexcalc($percentage, $breakpoint-width);
+          max-width: flexcalc($percentage, $breakpoint-width);
+        }
+      } @else {
+        .cell-#{$numerator}#{$delimiter}#{$denominator}#{$breakpoint-separator}#{$breakpoint-width} {
+          flex-basis: flexcalc($percentage, $breakpoint-width);
+          max-width: flexcalc($percentage, $breakpoint-width);
+        }
+      }
+    }
+  }
+}
+
+@if length($grid-breakpoints) > 0  {
+  @each $breakpoint-width, $break-point-size in $grid-breakpoints {
+    @if $breakpoint-width == 'mobile' {
+      .cell-full {
+        flex-basis: 100%;
+        max-width: 100%;
+      }
+
+      .cell-half {
+        flex-basis: 50%;
+        max-width: 50%;
+      }
+
+      .cell-auto {
+        flex: 1;
+      }
+
+      @each $denominator in $fractions {
+        @include columns($breakpoint-width, $denominator, $fractions, mobile);
+      }
+
+      @each $direction, $item in $grid-direction {
+        .#{$direction} {
+          flex-direction: unquote(#{$item});
+        }
+      }
+
+      @each $wrap, $item in $grid-wrap {
+        .#{$wrap} {
+          flex-wrap: unquote(#{$item});
+        }
+      }
+
+      @each $justify, $item in $grid-justify-content {
+        .#{$justify} {
+          justify-content: unquote(#{$item});
+        }
+      }
+
+      @each $align-content, $item in $grid-align-content {
+        .#{$align-content} {
+          align-content: unquote(#{$item});
+        }
+      }
+
+      @each $align-item, $item in $grid-align-items {
+        .#{$align-item} {
+          align-items: unquote(#{$item});
+        }
+      }
+
+      @each $align-self, $item in $grid-align-self {
+        .#{$align-self} {
+          align-self: unquote(#{$item});
+        }
+      }
+    } @else {
+      @media (min-width: $break-point-size) {
+        .cell-full#{$breakpoint-separator}#{$breakpoint-width} {
+          flex-basis: 100%;
+          max-width: 100%;
+        }
+
+        .cell-half#{$breakpoint-separator}#{$breakpoint-width} {
+          flex-basis: 50%;
+          max-width: 50%;
+        }
+
+        .cell-auto#{$breakpoint-separator}#{$breakpoint-width} {
+          flex: 1;
+        }
+        // Loop through the number of columns for each denominator of our fractions.
+        @each $denominator in $fractions {
+          @include columns($breakpoint-width, $denominator, $fractions, not-mobile);
+        }
+
+        @each $direction, $item in $grid-direction {
+          .#{$direction}#{$breakpoint-separator}#{$breakpoint-width} {
+            flex-direction: unquote(#{$item});
+          }
+        }
+
+        @each $wrap, $item in $grid-wrap {
+          .#{$wrap}#{$breakpoint-separator}#{$breakpoint-width} {
+            flex-wrap: unquote(#{$item});
+          }
+        }
+
+        @each $justify, $item in $grid-justify-content {
+          .#{$justify}#{$breakpoint-separator}#{$breakpoint-width} {
+            justify-content: unquote(#{$item});
+          }
+        }
+
+        @each $align-content, $item in $grid-align-content {
+          .#{$align-content}#{$breakpoint-separator}#{$breakpoint-width} {
+            align-content: unquote(#{$item});
+          }
+        }
+        @each $align-item, $item in $grid-align-items {
+          .#{$align-item}#{$breakpoint-separator}#{$breakpoint-width} {
+            align-items: unquote(#{$item});
+          }
+        }
+        @each $align-self, $item in $grid-align-self {
+          .#{$align-self}#{$breakpoint-separator}#{$breakpoint-width} {
+            align-self: unquote(#{$item});
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,35 @@
+@if length($padding) > 0  {
+  @each $breakpoint-width, $break-point-size in $utility-breakpoints {
+    @if $breakpoint-width == 'mobile' {
+      @each $padding-width, $item in $padding {
+        .transx-#{$padding-width} {
+          transform: translateX(#{$item});
+        }
+        .transx-#{$padding-width}-n {
+          transform: translateX(-#{$item}) ;
+        }
+        .transy-#{$padding-width} {
+          transform: translateY(#{$item}) ;
+        }
+        .transy-#{$padding-width}-n {
+          transform: translateY(-#{$item}) ;
+        }
+      }
+    } @else {
+      @each $padding-width, $item in $padding {
+        .transx-#{$padding-width}#{$breakpoint-separator}#{$breakpoint-width} {
+          transform: translateX(#{$item});
+        }
+        .transx-#{$padding-width}-n#{$breakpoint-separator}#{$breakpoint-width} {
+          transform: translateX(-#{$item});
+        }
+        .transy-#{$padding-width}#{$breakpoint-separator}#{$breakpoint-width} {
+          transform: translateY(#{$item});
+        }
+        .transy-#{$padding-width}-n#{$breakpoint-separator}#{$breakpoint-width} {
+          transform: translateY(-#{$item});
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+// Returns true if a given string is contained in a list.
+// Using this for media query mixins.
+
+@function contains($list, $var) {
+  @return (null != index($list, $var));
+}

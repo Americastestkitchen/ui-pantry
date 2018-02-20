@@ -1,0 +1,23 @@
+@if length($site-colors) > 0 {
+  @each $bg-button, $bg-color-button in $site-colors {
+    .bg#{$bg-button} {
+      background-color: #{$bg-color-button};
+      &.btn {
+        &:hover {
+          @if (lightness($bg-color-button) < 30) {
+            background-color: lighten($bg-color-button, 13%);
+          } @elseif (lightness($bg-color-button) < 50) {
+            background-color: darken($bg-color-button, 10%);
+          } @else {
+            background-color: darken($bg-color-button, 3%);
+          }
+        }
+        @if (lightness($bg-color-button) > 50) {
+          color: darken($bg-color-button, 60%);
+        } @else {
+          color: white;
+        }
+      }
+    }
+  }
+}

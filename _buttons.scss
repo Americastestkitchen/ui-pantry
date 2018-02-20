@@ -1,0 +1,70 @@
+// For button background colors, go to the "background-colors.scss" partial.
+
+.btn {
+  -webkit-appearance: none;
+  align-items: center;
+  border: none;
+  border-radius: 0;
+  display: inline-flex;
+  justify-content: center;
+  letter-spacing: 1.6px;
+  position: relative;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background-color .2s;
+  vertical-align: middle; // SVG children cause weird alignment issues.
+  
+  &-block {
+    width: 100%;
+  }
+
+  & a,
+  & button {
+    cursor: pointer;
+  }
+}
+
+@if length($combined-button-heights) > 0  {
+  @each $breakpoint-width, $break-point-size in $utility-breakpoints {
+    @if $breakpoint-width == 'mobile' {
+      @each $height, $button-height in $combined-button-heights {
+        .btn-h-#{$height} {
+          height: $button-height;
+        }
+      }
+    } 
+    @else {
+      @media (min-width: $break-point-size) {
+        @each $height, $button-height in $combined-button-heights {
+          .btn-h-#{$height}#{$breakpoint-separator}#{$breakpoint-width} {
+            height: $button-height;
+          }
+        }
+      }
+    }
+  }
+}
+
+@if length($default-site-colors) > 0  {
+  @each $bg-button, $bg-color-button in $default-site-colors {
+    .bg#{$bg-button} {
+      background-color: #{$bg-color-button};
+      &.btn {
+        &:hover {
+          @if (lightness($bg-color-button) < 30) {
+            background-color: lighten($bg-color-button, 13%);
+          } @elseif (lightness($bg-color-button) < 50) {
+            background-color: darken($bg-color-button, 10%);
+          } @else {
+            background-color: darken($bg-color-button, 3%);
+          }
+        }
+        @if (lightness($bg-color-button) > 50) {
+          color: darken($bg-color-button, 60%);
+        } @else {
+          color: white;
+        }
+      }
+    }
+  }
+}

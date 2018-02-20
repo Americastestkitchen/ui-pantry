@@ -1,0 +1,33 @@
+.d-ib {
+  display: inline-block;
+}
+.d-f {
+  display: flex;
+}
+.d-b {
+  display: block;
+  width: 100%;
+}
+.of-h {
+  overflow: hidden;
+}
+.of-a {
+  overflow: auto;
+}
+.ofy-h {
+  overflow-y: hidden;
+}
+.ofy-s {
+  overflow-y: scroll;
+}
+.ofx-h {
+  overflow-x: hidden;
+}
+.ofx-s {
+  overflow-x: scroll;
+}
+.clearfix {
+  content: "";
+  display: table;
+  clear: both;
+}

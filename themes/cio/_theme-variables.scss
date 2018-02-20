@@ -1,0 +1,99 @@
+// Is Font Used in this theme?
+$clarendon-bold-active: true;
+$merriweather-active: google-font;
+$montserrat-active: google-font;
+$montserrat-light-active: false;
+$montserrat-semi-bold-active: false;
+$proxima-nova-bold-active: true;
+$proxima-nova-regular-active: true;
+$proxima-nova-regular-italic-active: false;
+$proxima-nova-semi-bold-active: false;
+$roboto-active: google-font;
+
+$my-border-styles: (
+  d: 'dashed'
+);
+
+$default-border-color: #94856b;
+
+$my-border-widths: (
+  md: .4rem
+);
+
+$my-breakpoints: (
+  // Be careful here. This can create a lot of unecessary breakpoint 
+  // configurations. Add only the breakpoints you need.
+);
+
+$my-button-heights: (
+  sm: 3.5rem,
+  md: 4rem,
+  lg: 5rem
+);
+
+$my-container-orders: (
+//  1: 1,
+//  2: 2,
+//  3: 3
+//  4: 4,
+//  5: 5
+ );
+
+$my-form-input-heights: (
+  sm: 3.6rem,
+  md: 5rem
+);
+
+$my-font-sizes: (
+  xx-sm: 1rem,
+  x-sm: 1.2rem,
+  sm: 1.4rem,
+  md: 1.6rem,
+  lg: 2.3rem,
+  x-lg: 2.6rem,
+  xx-lg: 3.2rem,
+  xxx-lg: 3.6rem
+);
+
+$my-icon-widths: (
+  sm: 1rem,
+  md: 2rem
+);
+
+$my-letter-spacing: ();
+
+$my-line-heights: (
+  xx-sm: 1.0,
+  x-sm: 1.19,
+  sm: 1.22,
+  md: 1.25,
+  lg: 1.29,
+  x-lg: 1.44,
+  xx-lg: 1.36,
+  xxx-lg: 1.56,
+  xxxx-lg: 1.67,
+  xxxxx-lg: 2.0
+);
+
+$my-outline-sizes: ();
+
+$my-padding: (
+  sm: .4rem,
+  md: .8rem,
+  lg: 1.6rem,
+  x-lg: 2.4rem,
+  xx-lg: 3.2rem,
+  xxx-lg: 6rem
+);
+
+$my-site-colors: (
+  c-dk-brown: #3f2b1e,
+  c-lt-brown: #94856b,
+  c-dk-tan: #d9cca7,
+  c-tan: #fcf9f3,
+  c-red: #d73a15,
+  c-green: #7ea042,
+  c-dk-gray: #b6b6b6,
+  c-x-dk-gray: #999,
+  c-lt-gray: #c2c2c2
+);

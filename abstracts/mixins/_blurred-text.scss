@@ -1,0 +1,75 @@
+@mixin blur-text($blur-shadow: 7px, $blur-text-color: color(text), $blur-opacity: 0.9) {
+  color: transparent !important;
+  opacity: $blur-opacity;
+  pointer-events: none;
+  text-shadow: 0 0 $blur-shadow $blur-text-color !important;
+}
+
+@mixin blurred-border($location:both) {
+  @include position(relative);
+  border-bottom: none;
+  border-top: none;
+
+  &::after,
+  &::before {
+    @include position(absolute, null null null 0);
+    @include size(100% rem(15px));
+    background-color: transparent;
+    content: '';
+    opacity: .5;
+  }
+
+  @if $current-theme == 'cco' {
+    @if $location == both {
+      &::after {
+        @include background(linear-gradient(color(background, invert), color(border, blurred), color(background, invert)));
+        bottom: rem(-10px);
+      }
+
+      &::before {
+        @include background(linear-gradient(color(background, invert), color(border, blurred), color(background, invert)));
+        top: rem(-10px);
+      }
+    }
+
+    @if $location == bottom {
+      &::before {
+        @include background(linear-gradient(color(background, invert), color(border, blurred), color(background, invert)));
+        top: rem(-10px);
+      }
+    }
+
+    @if $location == top {
+      &::after {
+        @include background(linear-gradient(color(background, invert), color(border, blurred), color(background, invert)));
+        bottom: rem(-10px);
+      }
+    }
+  } @else {
+    @if $location == both {
+      &::after {
+        @include background(linear-gradient(color(background, invert), color(border), color(background, invert)));
+        bottom: rem(-10px);
+      }
+
+      &::before {
+        @include background(linear-gradient(color(background, invert), color(border), color(background, invert)));
+        top: rem(-10px);
+      }
+    }
+
+    @if $location == bottom {
+      &::before {
+        @include background(linear-gradient(color(background, invert), color(border), color(background, invert)));
+        top: rem(-10px);
+      }
+    }
+
+    @if $location == top {
+      &::after {
+        @include background(linear-gradient(color(background, invert), color(border), color(background, invert)));
+        bottom: rem(-10px);
+      }
+    }
+  }
+}

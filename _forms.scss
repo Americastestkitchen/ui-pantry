@@ -1,0 +1,59 @@
+input, select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: none;
+  width: 100%;
+  &:not[type="checkbox"]:not[type="radio"] {
+    width: 100%;
+  }
+  &:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 3rem #fff inset;
+  }
+}
+
+::-webkit-input-placeholder { /* Chrome */
+  opacity: 1;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  opacity: 1;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  opacity: 1;
+}
+:-moz-placeholder { /* Firefox 4 - 18 */
+  opacity: 1;
+}
+
+select {
+  background: url('https://res.cloudinary.com/hksqkdlah/image/upload/dpr_auto,f_auto,fl_lossy.progressive,q_auto/v1515082070/cio-home-page/down-arrow.png') 98% 50% no-repeat;
+  background-size: 1rem;
+  text-indent: 0.01px;
+  text-overflow: '';
+  @include browser(firefox) {
+    padding-left: 2px !important;
+  }
+  &::-ms-expand {
+    display: none;
+  }
+}
+// Form input heights.
+@if length($combined-form-input-heights) > 0  {
+  @each $breakpoint-width, $break-point-size in $utility-breakpoints {
+    @if $breakpoint-width == 'mobile' {
+      @each $height, $input-height in $combined-form-input-heights {
+        .ih-#{$height} {
+          height: $input-height;
+        }
+      }
+    }
+    @else {
+      @media (min-width: $break-point-size) {
+        @each $height, $input-height in $combined-form-input-heights {
+          .ih-#{$height}#{$breakpoint-separator}#{$breakpoint-width} {
+            height: $input-height;
+          }
+        }
+      }
+    }
+  }
+}

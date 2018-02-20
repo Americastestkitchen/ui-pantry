@@ -1,0 +1,27 @@
+@if $clarendon-bold-active == true {
+  @include font-face-local('Clarendon Bold', clarendon);
+}
+
+@if $montserrat-semi-bold-active == true {
+  @include font-face-cdn('Montserrat Semi Bold', montserrat-semibold-webfont);
+}
+
+@if $montserrat-light-active == true {
+  @include font-face-cdn('Montserrat Light', montserrat-light-webfont);
+}
+
+@if $proxima-nova-regular-active == true {
+  @include font-face-cdn('Proxima Nova Regular', proximanova-regular-webfont);
+}
+
+@if $proxima-nova-regular-italic-active == true {
+  @include font-face-cdn('Proxima Nova RegularItalic', proxima-nova-italic);
+}
+
+@if $proxima-nova-bold-active == true {
+  @include font-face-cdn('Proxima Nova Bold', proximanova-bold-webfont);
+}
+
+@if $proxima-nova-semi-bold-active == true {
+  @include font-face-cdn('Proxima Nova Semi Bold', proxima_nova_sbold-webfont);
+}

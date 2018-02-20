@@ -1,0 +1,216 @@
+@mixin spacing($type, $contains-negative-values: false){
+  @each $breakpoint-width, $break-point-size in $utility-breakpoints {
+    @if $breakpoint-width == 'mobile' {
+      .#{str-slice($type, 0, 1)}-n {
+        #{$type}: 0;
+      }
+      @each $padding-width, $item in $padding {
+        .#{str-slice($type, 0, 1)}-#{$padding-width} {
+          #{$type}: $item;
+        }
+        @include mq-max(map-get($breakpoints, medium-min)) {
+          .#{str-slice($type, 0, 1)}-#{$padding-width}#{$breakpoint-separator}mobile-only {
+            #{$type}: $item;
+          }
+          @each $box, $box-item in $box-regions {
+            @if $box-item == 'vertical' {
+              .#{str-slice($type, 0, 1)}v-#{$padding-width}#{$breakpoint-separator}mobile-only {
+                #{$type}-top: $item;
+                #{$type}-bottom: $item;
+              }
+              @if $contains-negative-values {
+                .#{str-slice($type, 0, 1)}v-#{$padding-width}-n#{$breakpoint-separator}mobile-only {
+                  #{$type}-top: -$item;
+                  #{$type}-bottom: -$item;
+                }
+              }
+            } @else if ($box-item == 'horizontal') {
+              .#{str-slice($type, 0, 1)}h-#{$padding-width}#{$breakpoint-separator}mobile-only {
+                #{$type}-left: $item;
+                #{$type}-right: $item;
+              }
+              @if $contains-negative-values {
+                .#{str-slice($type, 0, 1)}h-#{$padding-width}-n#{$breakpoint-separator}mobile-only {
+                  #{$type}-left: -$item;
+                  #{$type}-right: -$item;
+                }
+              }
+            } @else {
+              .#{str-slice($type, 0, 1)}#{$box}-#{$padding-width}#{$breakpoint-separator}mobile-only {
+                #{$type}-#{$box-item}: $item;
+              }
+              @if $contains-negative-values {
+                .#{str-slice($type, 0, 1)}#{$box}-#{$padding-width}-n#{$breakpoint-separator}mobile-only {
+                  #{$type}-#{$box-item}: -$item;
+                }
+              }
+            }
+          }
+        }
+        @each $box, $box-item in $box-regions {
+          @if $box-item == 'vertical' {
+            .#{str-slice($type, 0, 1)}v-#{$padding-width} {
+              #{$type}-top: $item;
+              #{$type}-bottom: $item;
+            }
+            @if $contains-negative-values {
+              .#{str-slice($type, 0, 1)}v-#{$padding-width}-n {
+                #{$type}-top: -$item;
+                #{$type}-bottom: -$item;
+              }
+            }
+          } @else if ($box-item == 'horizontal') {
+            .#{str-slice($type, 0, 1)}h-#{$padding-width} {
+              #{$type}-left: $item;
+              #{$type}-right: $item;
+            }
+            @if $contains-negative-values {
+              .#{str-slice($type, 0, 1)}h-#{$padding-width}-n {
+                #{$type}-left: -$item;
+                #{$type}-right: -$item;
+              }
+            }
+          } @else {
+            .#{str-slice($type, 0, 1)}#{$box}-#{$padding-width} {
+              #{$type}-#{$box-item}: $item;
+            }
+            @if $contains-negative-values {
+              .#{str-slice($type, 0, 1)}#{$box}-#{$padding-width}-n {
+                #{$type}-#{$box-item}: -$item;
+              }
+            }
+          }
+        }
+      }
+    }
+    @else {
+      @media (min-width: $break-point-size) {
+        @if $breakpoint-width == 'tablet' {
+          @include mq-range(map-get($breakpoints, medium-min), map-get($breakpoints, large)) {
+            .#{str-slice($type, 0, 1)}-n#{$breakpoint-separator}#{$breakpoint-width}-only {
+              #{$type}: 0;
+            }
+            @each $padding-width, $item in $padding {
+              .#{str-slice($type, 0, 1)}-#{$padding-width}#{$breakpoint-separator}#{$breakpoint-width}-only {
+                #{$type}: $item;
+              }
+            @each $box, $box-item in $box-regions {
+              @if $box-item == 'vertical' {
+                .#{str-slice($type, 0, 1)}v-#{$padding-width}#{$breakpoint-separator}#{$breakpoint-width}-only {
+                  #{$type}-top: $item;
+                  #{$type}-bottom: $item;
+                }
+                @if $contains-negative-values {
+                  .#{str-slice($type, 0, 1)}v-#{$padding-width}-n#{$breakpoint-separator}#{$breakpoint-width}-only {
+                    #{$type}-top: -$item;
+                    #{$type}-bottom: -$item;
+                  }
+                }
+              } @else if ($box-item == 'horizontal') {
+                .#{str-slice($type, 0, 1)}h-#{$padding-width}#{$breakpoint-separator}#{$breakpoint-width}-only {
+                  #{$type}-left: $item;
+                  #{$type}-right: $item;
+                }
+                @if $contains-negative-values {
+                  .#{str-slice($type, 0, 1)}h-#{$padding-width}-n#{$breakpoint-separator}#{$breakpoint-width}-only {
+                    #{$type}-left: -$item;
+                    #{$type}-right: -$item;
+                  }
+                }
+              } @else {
+                .#{str-slice($type, 0, 1)}#{$box}-#{$padding-width}#{$breakpoint-separator}#{$breakpoint-width}-only {
+                  #{$type}-#{$box-item}: $item;
+                }
+                @if $contains-negative-values {
+                  .#{str-slice($type, 0, 1)}#{$box}-#{$padding-width}-n#{$breakpoint-separator}#{$breakpoint-width}-only {
+                  #{$type}-#{$box-item}: -$item;
+                }
+                }
+              }
+            }
+        } 
+            }
+          }
+        .#{str-slice($type, 0, 1)}-n#{$breakpoint-separator}#{$breakpoint-width} {
+          #{$type}: 0;
+        }
+        @each $padding-width, $item in $padding {
+          .#{str-slice($type, 0, 1)}-#{$padding-width}#{$breakpoint-separator}#{$breakpoint-width} {
+            #{$type}: $item;
+          }
+          @each $box, $box-item in $box-regions {
+            @if $box-item == 'vertical' {
+              .#{str-slice($type, 0, 1)}v-#{$padding-width}#{$breakpoint-separator}#{$breakpoint-width} {
+                #{$type}-top: $item;
+                #{$type}-bottom: $item;
+              }
+              @if $contains-negative-values {
+                .#{str-slice($type, 0, 1)}v-#{$padding-width}-n#{$breakpoint-separator}#{$breakpoint-width} {
+                  #{$type}-top: -$item;
+                  #{$type}-bottom: -$item;
+                }
+              }
+            } @else if ($box-item == 'horizontal') {
+              .#{str-slice($type, 0, 1)}h-#{$padding-width}#{$breakpoint-separator}#{$breakpoint-width} {
+                #{$type}-left: $item;
+                #{$type}-right: $item;
+              }
+              @if $contains-negative-values {
+                .#{str-slice($type, 0, 1)}h-#{$padding-width}-n#{$breakpoint-separator}#{$breakpoint-width} {
+                  #{$type}-left: -$item;
+                  #{$type}-right: -$item;
+                }
+              }
+            } @else {
+              .#{str-slice($type, 0, 1)}#{$box}-#{$padding-width}#{$breakpoint-separator}#{$breakpoint-width} {
+                #{$type}-#{$box-item}: $item;
+              }
+              @if $contains-negative-values {
+                .#{str-slice($type, 0, 1)}#{$box}-#{$padding-width}-n#{$breakpoint-separator}#{$breakpoint-width} {
+                #{$type}-#{$box-item}: -$item;
+              }
+              }
+            }
+          }
+        } 
+      }
+    }
+  }
+}
+
+@if length($padding) > 0  {
+  @include spacing(padding);
+  @include spacing(margin);
+}
+
+.mh-auto {
+  margin-left: auto;
+  margin-right: auto;
+  @include mq-max(map-get($breakpoints, medium-min)) {
+    &#{$breakpoint-separator}mobile-only {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  @include mq-range(map-get($breakpoints, medium-min), map-get($breakpoints, large)) {
+    &#{$breakpoint-separator}tablet-only {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  @include mq(tablet) {
+    &#{$breakpoint-separator}tablet {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  @include mq(desktop) {
+    &#{$breakpoint-separator}desktop {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}

@@ -1,0 +1,57 @@
+// Position of Icon in button or link
+// Before Text
+.icon-pre {
+  margin-right: 4px;
+  margin-left: -8px;
+  
+  &.icon-lg {
+    margin-right: 5px;
+    margin-left: -10px;
+  }
+}
+
+// Position of Icon in button or link
+// After Text
+.icon-post {
+  margin-left: 0;
+  margin-right: -8px;
+    
+  &.icon-lg {
+    margin-right: -10px;
+  }
+}
+
+@if length($combined-icon-widths) > 0  {
+  @each $breakpoint-width, $break-point-size in $utility-breakpoints {
+    @if $breakpoint-width == 'mobile' {
+      @each $width, $icon-width in $combined-icon-widths {
+        .icon-#{$width} {
+          width: $icon-width;
+          height: $icon-width;
+        }
+      }
+    } @else {
+      @media (min-width: $break-point-size) {
+        @each $width, $icon-width in $combined-icon-widths {
+          .icon-#{$width}#{$breakpoint-separator}#{$breakpoint-width} {
+            width: $icon-width;
+            height: $icon-width;
+          }
+        }
+      }
+    }
+  }
+}
+
+@if length($default-site-colors) > 0  {
+  @each $icon-color, $icon-colors in $site-colors {
+    .icon#{$icon-color} {
+      fill: #{$icon-colors};
+    }
+    .icon-s#{$icon-color} {
+      path {
+        stroke: #{$icon-colors};
+      }
+    }
+  }
+}
